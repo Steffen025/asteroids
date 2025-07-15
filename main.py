@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -34,6 +35,9 @@ def main():
         Clock.tick(60) # Limit the frame rate to 60 FPS
         dt = Clock.tick(60) / 1000.0
         updatables.update(dt)
+        for asteroid in asteroids:
+            if asteroid.collide(player):
+                sys.exit("Game over!")
         for drawable in drawables:
             drawable.draw(screen)
         pygame.display.flip()
