@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from player import Player
 
 def main():
     
@@ -12,6 +13,8 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
     
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -19,8 +22,11 @@ def main():
         screen.fill((0, 0, 0))  # Fill the screen with black
         Clock.tick(60) # Limit the frame rate to 60 FPS
         dt = Clock.tick(60) / 1000.0
-        # Here you would typically update game state and draw objects
+        player.draw(screen)
         pygame.display.flip()
+        
+    
+    
         
     
 
